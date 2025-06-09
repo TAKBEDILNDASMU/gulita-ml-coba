@@ -1,10 +1,20 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import Any, Dict
 import numpy as np
 import tensorflow as tf
 
 app = FastAPI()
+
+# 👇 Add CORS configuration
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # 👈 Allow all origins; restrict in production
+    allow_credentials=True,
+    allow_methods=["*"],  # ["GET", "POST", ...] for specific methods
+    allow_headers=["*"],
+)
 
 # Load the Keras model
 model = tf.keras.models.load_model("./best_model_diabetes.h5")  # change filename if needed
