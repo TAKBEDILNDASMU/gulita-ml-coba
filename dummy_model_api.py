@@ -17,7 +17,7 @@ app.add_middleware(
 )
 
 # Load the Keras model
-model = tf.keras.models.load_model("./best_model_diabetes.h5")  # change filename if needed
+model = tf.keras.models.load_model("./final_model_diabetes.h5")  # change filename if needed
 
 
 class PredictionRequest(BaseModel):
